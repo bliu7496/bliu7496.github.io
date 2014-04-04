@@ -5,8 +5,16 @@
 		<script>
 			function addText(){
 				var input= document.getElementById('input').value;
-				document.getElementById('do').innerHTML += "<li>" + input + "</li>";
+				document.getElementById('do').innerHTML += "<li>" + input + "<input type= 'button' value='Delete' onclick='deleteText(this)'/></li>";
 				document.getElementById('input').value="";
+			}
+			function deleteText(context){
+				if (context){ 
+					context.parentNode.parentNode.removeChild(context.parentNode);
+				}
+				else{
+					document.getElementById('do').innerHTML= "";
+				}
 			}
 		</script>
 		<link href= "style.css" rel="stylesheet">
@@ -21,5 +29,6 @@
 		<input type ="text" id="input" onkeydown="if (event. keyCode == 13) document. getElementById('add').click()"/>
 		<input type= "button" id="add" onclick="addText()" value="Add To-Do Item"/>
 		<p id="do"> </p>
+		<input type= "button" id="remove" value="Delete All" onclick="deleteText()" value=""/>
 	</body>
 </html>
